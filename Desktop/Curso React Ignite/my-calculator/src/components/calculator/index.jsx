@@ -22,6 +22,10 @@ export const Calculator = () => {
     if (primaryValue === minus) setPrimaryValue(Math.abs(primaryValue));
   }
 
+  const handlePercentage = () => {
+    setPrimaryValue(primaryValue / 100);
+  }
+
   return (
     <div className="container">
       <div className="containerCalculator">
@@ -29,8 +33,8 @@ export const Calculator = () => {
         <div className="contentCalculator">
           <button className="darkGrey" onClick={handleDelete}>C</button>
           <button className="darkGrey" onClick={handleChangePlusAndMinus}>+/-</button>
-          <button className="darkGrey" value="%">%</button>
-          <button className="orange" value="+">+/-</button>
+          <button className="darkGrey" onClick={handlePercentage} value="%">%</button>
+          <button className="orange" value="+">+</button>
           <button value={1} onClick={e => handleChangeValue(e.target.value)}>1</button>
           <button value={2} onClick={e => handleChangeValue(e.target.value)}>2</button>
           <button value={3} onClick={e => handleChangeValue(e.target.value)}>3</button>
