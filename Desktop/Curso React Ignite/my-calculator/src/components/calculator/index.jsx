@@ -3,6 +3,8 @@ import { useState } from "react";
 
 export const Calculator = () => {
   const [primaryValue, setPrimaryValue] = useState(0);
+  const [oldValue, setOldValue] = useState(0);
+  const [result, setResult] = useState();
   const [operator, setOperator] = useState("");
 
   const handleChangeValue = (e) => {
@@ -29,12 +31,20 @@ export const Calculator = () => {
 
   const handleOperator = (e) => {
     setOperator(e);
+    setOldValue(primaryValue);
+    setPrimaryValue(0);
+  }
+
+  const calculate = () => {
+    console.log(primaryValue);
+    console.log(oldValue);
+    console.log(operator);
   }
 
   return (
     <div className="container">
       <div className="containerCalculator">
-        <div className="screenCalculator">{primaryValue}</div>
+        <div className="screenCalculator">{!result ? primaryValue.toString().replace(".", ",") : result}</div>
         <div className="contentCalculator">
           <button className="darkGrey" onClick={handleDelete}>C</button>
           <button className="darkGrey" onClick={handleChangePlusAndMinus}>+/-</button>
@@ -55,7 +65,7 @@ export const Calculator = () => {
           <button value={0} onClick={e => handleChangeValue(e.target.value)}>0</button>
           <button className="darkGrey" style={{ visibility: "hidden" }}>del</button>
           <button value="." onClick={e => handleChangeValue(e.target.value)}>,</button>
-          <button className="orange">=</button>
+          <button className="orange" onClick={calculate}>=</button>
         </div>
       </div>
     </div>
