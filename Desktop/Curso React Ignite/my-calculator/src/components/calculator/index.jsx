@@ -5,13 +5,17 @@ export const Calculator = () => {
   const [primaryValue, setPrimaryValue] = useState(0);
 
   const handleChangeValue = (e) => {
-    console.log(e);
+    if (primaryValue === 0) {
+      setPrimaryValue(e)
+    } else {
+      setPrimaryValue(primaryValue + e)
+    };
   }
 
   return (
     <div className="container">
       <div className="containerCalculator">
-        <div className="screenCalculator">{0}</div>
+        <div className="screenCalculator">{primaryValue}</div>
         <div className="contentCalculator">
           <button className="darkGrey">C</button>
           <button className="darkGrey">+/-</button>
@@ -30,9 +34,7 @@ export const Calculator = () => {
           <button value={9} onClick={e => handleChangeValue(e.target.value)}>9</button>
           <button className="orange" value="/">/</button>
           <button value={0} onClick={e => handleChangeValue(e.target.value)}>0</button>
-          <button className="darkGrey" style={{ visibility: "hidden" }}>
-            del
-          </button>
+          <button className="darkGrey" style={{ visibility: "hidden" }}>del</button>
           <button value="." onClick={e => handleChangeValue(e.target.value)}>,</button>
           <button className="orange">=</button>
         </div>
