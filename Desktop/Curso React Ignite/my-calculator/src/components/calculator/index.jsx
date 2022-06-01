@@ -12,12 +12,16 @@ export const Calculator = () => {
     };
   }
 
+  const handleDelete = () => {
+    setPrimaryValue(0);
+  }
+
   return (
     <div className="container">
       <div className="containerCalculator">
         <div className="screenCalculator">{primaryValue}</div>
         <div className="contentCalculator">
-          <button className="darkGrey">C</button>
+          <button className="darkGrey" onClick={handleDelete}>C</button>
           <button className="darkGrey">+/-</button>
           <button className="darkGrey" value="%">%</button>
           <button className="orange" value="+">+/-</button>
