@@ -16,13 +16,19 @@ export const Calculator = () => {
     setPrimaryValue(0);
   }
 
+  const handleChangePlusAndMinus = () => {
+    const minus = -primaryValue;
+    setPrimaryValue(minus);
+    if (primaryValue === minus) setPrimaryValue(Math.abs(primaryValue));
+  }
+
   return (
     <div className="container">
       <div className="containerCalculator">
         <div className="screenCalculator">{primaryValue}</div>
         <div className="contentCalculator">
           <button className="darkGrey" onClick={handleDelete}>C</button>
-          <button className="darkGrey">+/-</button>
+          <button className="darkGrey" onClick={handleChangePlusAndMinus}>+/-</button>
           <button className="darkGrey" value="%">%</button>
           <button className="orange" value="+">+/-</button>
           <button value={1} onClick={e => handleChangeValue(e.target.value)}>1</button>
